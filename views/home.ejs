@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spend Book</title>
+    <link rel="icon" type="image/png" href="./images/icon.png" />
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin-top: 0px;
+            /* background-image: url('images/background.jpg'); Optional: Set a background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Container for buttons */
+        .btncontainer {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            
+            /* Center buttons horizontally */
+            margin-left: auto;
+            margin-right: auto;
+            /* Center the container itself */
+            gap: 15px;
+            /* Adjust the gap between buttons */
+        }
+
+        .btn {
+            font-size: 1.2rem;
+            background-color: #4ba2ff;
+            border: none;
+            border-radius: 25px;
+            color: #ffffff;
+            background-color: rgb(30, 186, 252);
+            width: 170px;
+            height: 40px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: rgb(3, 170, 242);
+            transform: scale(1.05);
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 10px;
+
+        }
+
+        .image-container img {
+            max-width: 300px;
+            height: 300px;
+            border-radius: 15px;
+        }
+
+
+        .titleHome {
+            color: rgb(255, 122, 28);
+            font-size: 3rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+
+        /* Flash message styling */
+        .flash-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <!-- Flash messages -->
+        <% if (success.length> 0) { %>
+            <div class="flash-message alert alert-success">
+                <%= success %>
+            </div>
+            <% } %>
+
+                <% if (error.length> 0) { %>
+                    <div class="flash-message alert alert-danger">
+                        <%= error %>
+                    </div>
+                    <% } %>
+
+                        <div class="image-container">
+                            <img src="https://img.freepik.com/premium-photo/smartphone-user-managing-expenses-with-finance-app-flat-vector-illustration_980716-488748.jpg?w=360"
+                                alt="Daily Wages" style="max-width: 100%; ">
+                        </div>
+                        <h1 class="titleHome">Spend Book</h1>
+                        <div class="btncontainer">
+                            <form action="/showAll">
+                                <button type="submit" class="btn">Show All Spends</button>
+                            </form>
+
+                        </div>
+                        <div class="btncontainer">
+
+                            <form action="/logout">
+                                <button type="submit" class="btn">LogOut</button>
+                            </form>
+                        </div>
+                        <div class="btncontainer">
+
+                            <form action="/calculateSpends">
+                                <button type="submit" class="btn">Calculate</button>
+                            </form>
+                        </div>
+                       
+
+
+    </div>
+
+    <script>
+        setTimeout(function () {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(message => {
+                message.style.display = 'none';
+            });
+        }, 5000); // 5000ms = 5 seconds
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
